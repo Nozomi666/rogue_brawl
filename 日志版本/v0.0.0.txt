@@ -1,0 +1,15 @@
+
+优化尝试改动一览：便于后续debug和在重大问题发生时回溯
+1. projectile_manger.lua添加了投射物队列，对makeProjectile进行包裹，延缓实际弹幕的创建 ok
+2. buff.lua中央计时器化，使用单一计时器遍历和控制所有存在的buff ok
+3. obj.lua的modStats在传入time参数情况下中央计时器化，使用单一计时器遍历和控制所有临时的属性修改 ok
+4. projectile_manger.lua和effect.lua添加了对投射物特效进行视距限制的逻辑 不行
+
+
+--想要尝试的方向
+1. 除投射物外的effect整体应用视距限制
+    1.1 unitEffect，如果单位不在视距内则移除特效
+    1.2 pointEffect，如果产生位置不在视距内且没有持续时间或持续时间<=1则不创建特效
+2. 给同种debuff的特效设置数量上限
+3. 冲击波降低抓取判定的频率
+4. 给所有投射物使用的网格算法（复杂，效果不确定）

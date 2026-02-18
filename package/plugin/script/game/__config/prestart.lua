@@ -1,0 +1,55 @@
+local message = require 'jass.message'
+
+local client_online = true -- 客户端在线游戏  默认是在线的
+local client_ready = false -- 客户端查看录像
+local client_online_ready = false -- 客户端在线观战
+
+local list = message.load_window_infos()
+
+for index, info in ipairs(list) do
+
+    local title = info.title or ''
+
+    -- 如果是直播
+    if title:find('直播') then
+
+        client_online = false
+        client_online_ready = true
+
+        -- 如果是录像
+    elseif title:find('录像') then
+
+        client_online = false
+        client_ready = true
+    end
+
+    print(index, info.title, info.class)
+end
+
+if client_online then
+    print('在线游戏')
+elseif client_ready then
+    print('当前是查看录像')
+    localEnv = false
+elseif client_online_ready then
+    print('当前是观战')
+end
+
+
+function code.checkIsReply()
+
+    if client_online then
+        --print('在线游戏 1')
+        return 1
+    elseif client_ready then
+        --print('当前是查看录像 2')
+        return 2
+    elseif client_online_ready then
+        --print('当前是观战 3')
+        return 3
+    end
+
+    print('当前观战检测出错 -1')
+    return -1
+
+end

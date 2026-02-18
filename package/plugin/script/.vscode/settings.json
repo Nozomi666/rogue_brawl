@@ -1,0 +1,12 @@
+{
+    "Lua.diagnostics.disable": [
+        "duplicate-index",
+        "lowercase-global"
+    ],
+    "Lua.diagnostics.globals": [
+        "TriggerRegisterPlayerEventEndCinematic",
+        "TriggerRegisterTimerEventSingle"
+    ],
+    "Lua.workspace.preloadFileSize": 500,
+    "Lua.workspace.checkThirdParty": false
+}
