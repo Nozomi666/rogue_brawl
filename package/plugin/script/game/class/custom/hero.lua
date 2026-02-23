@@ -157,7 +157,7 @@ function mt:init(keys)
     local hId = 1
     local tId = SKILL_TARGET_NONE
 
-    self:setStats(ST_BASE_RANGE, 200)
+    self:setStats(ST_BASE_RANGE, self.range)
 
     self:modStats(ST_BASE_HP_MAX, 1000)
 

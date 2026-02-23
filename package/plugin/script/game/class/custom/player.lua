@@ -103,7 +103,7 @@ end
 function mt:startGame()
 
     self.blessManager = BlessManager:new(self)
-    local heroPack = fc.getAttr('hero_pack', '狂战士')
+    local heroPack = fc.getAttr('hero_pack', '传奇盗贼')
     self:pickHero({
         hero = heroPack,
         isLocked = false,
@@ -261,7 +261,7 @@ function mt:pickHero(info)
         setmetatable(pack, cg.Hero)
     end
 
-    local uType = [[H000]]
+    local uType = pack.uType
     local point = self.heroBornPoint
 
     local heroJ = CreateUnit(self.handle, ID(uType), point[1], point[2], 0)

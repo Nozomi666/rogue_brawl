@@ -203,6 +203,9 @@ function mt:initHero(pack)
     fc.setAttr('hero_pack', name, pack)
     reg:addToPool('hero_pack', pack)
 
+        local objId = pack.objId
+    pack.uType = str.format('X%03d', objId)
+
     local uniqueId = TEMP_ID
     TEMP_ID = TEMP_ID + 1
 
