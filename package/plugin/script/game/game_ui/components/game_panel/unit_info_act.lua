@@ -142,7 +142,7 @@ function mt:update()
     mt.expHero = u
 
     if u.type == 'hero' then
-        self.heroInfo:hide()
+        self.heroInfo:show()
         GUI.EnemySkills:hide()
     else
         self.heroInfo:hide()
