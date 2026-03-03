@@ -608,6 +608,18 @@ function mt:modHpMax(keys)
 end
 --------------------------------------------------------------------------------------
 
+function mt:testsin(keys)
+    local f = 0
+    for key,v in pairs(keys.args) do
+        f = tonumber(v) or 0
+        print(f,type(f))
+        gdebug(math.sin(f))
+    end
+end
+
+--------------------------------------------------------------------------------------
+
+
 mt.act = {
     debug = mt.switchDebugMode, -- 开关debug模式
     deep = mt.switchDeepDebug,
@@ -689,6 +701,9 @@ mt.act = {
     crash = mt.crash, --故意测试原生函数崩溃
 
     mmp = mt.mmp, -- 小地图测试
+
+    sin = mt.testsin
+
 }
 --------------------------------------------------------------------------------------
 function mt:enterMsg(p, msg)
