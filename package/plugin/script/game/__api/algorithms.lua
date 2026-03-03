@@ -16,6 +16,14 @@ function ConvertAgiToAtkRate(val)
     return val * AGI_RATE_ATK_DMG
 end
 --------------------------------------------------------------------------------------
+function ConvertAgiToPhyDmg(val)
+    return val * AGI_STEADY_PHY_DMG
+end
+--------------------------------------------------------------------------------------
+function ConvertAgiToPhyRate(val)
+    return val * 5 / ( val + 20000)
+end
+--------------------------------------------------------------------------------------
 -- function ConvertAgiToPhyDef(val)
 --     return val * (AGI_RATE_PHY_DEF_1 / (val + AGI_RATE_PHY_DEF_2)) * 1
 -- end
@@ -24,8 +32,12 @@ function ConvertIntToSkillRate(val)
     return val * INT_RATE_SKILL_DMG
 end
 --------------------------------------------------------------------------------------
+function ConvertIntToMagDmg(val)
+    return val * INT_STEADY_MAG_DMG
+end
+--------------------------------------------------------------------------------------
 function ConvertIntToMagRate(val)
-    return val * INT_RATE_MAG_DMG
+    return val * 5 / ( val + 20000)
 end
 --------------------------------------------------------------------------------------
 function ConvertFunctionInverse1(val)

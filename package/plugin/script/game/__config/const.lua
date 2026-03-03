@@ -23,16 +23,18 @@ if not localEnv then
     MAP_DEBUG_MODE = false
 end
 --------------------------------------------------------------------------------------
-STR_RATE_HP = 0
-STR_RATE_HP_REGEN = 0
-STR_RATE_HP_PCT = 0.01 * 0.1
-STR_RATE_PHY_DMG = 0.01 * 0.1
+STR_RATE_HP = 5
+STR_RATE_HP_REGEN = 0.1
+STR_RATE_HP_PCT = 0
+STR_RATE_PHY_DMG = 0
 
-AGI_RATE_ATK_SPD = 0.01 * 0.1
-AGI_RATE_ATK_DMG = 0.01 * 0.1
+AGI_RATE_ATK_SPD = 0
+AGI_RATE_ATK_DMG = 0
+AGI_STEADY_PHY_DMG = 0.3
 
-INT_RATE_SKILL_DMG = 0.01 * 0.1
-INT_RATE_MAG_DMG = 0.01 * 0.1
+INT_RATE_SKILL_DMG = 0
+INT_RATE_MAG_DMG = 0
+INT_STEADY_MAG_DMG = 0.3
 
 INT_RATE_SPE_ATK = 1
 INT_RATE_CHARGE_1 = 1
@@ -40,7 +42,7 @@ INT_RATE_CHARGE_2 = 100000
 INT_RATE_MAG_RATE_1 = 1
 INT_RATE_MAG_RATE_2 = 100000
 
-MAIN_RATE_ATK = 0
+MAIN_RATE_ATK = 0.3
 
 --------------------------------------------------------------------------------------
 AMP_RATE_PHY_1 = 20
@@ -505,14 +507,14 @@ ST_FINAL_REDUCE_DMG_PCT = makeConstId({
     isPct = true,
 })
 
-ST_SKILL_DMG = makeConstId({
-    name = '技能伤害',
-    isPct = true,
+ST_MAG_DMG = makeConstId({
+    name = '法术固伤',
 })
-ST_ATK_DMG = makeConstId({
-    name = '攻击伤害',
-    isPct = true,
+
+ST_PHY_DMG = makeConstId({
+    name = '物理固伤',
 })
+
 ST_ATK_SPEED = makeConstId({
     name = '攻速',
     isPct = true,
@@ -576,7 +578,7 @@ ST_RECEIVE_EXTRA_MAG_DMG = makeConstId({
 })
 
 ST_PHY_RATE = makeConstId({
-    name = '物理强度',
+    name = '物理加成',
     isPct = true,
 })
 ST_PHY_RESIST = makeConstId({
@@ -584,7 +586,7 @@ ST_PHY_RESIST = makeConstId({
     isPct = true,
 })
 ST_MAG_RATE = makeConstId({
-    name = '魔法强度',
+    name = '法术加成',
     isPct = true,
 })
 ST_MAG_RESIST = makeConstId({

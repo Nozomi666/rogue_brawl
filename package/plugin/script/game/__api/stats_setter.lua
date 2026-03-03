@@ -41,15 +41,10 @@ function mt.updateBonusStats(u)
         u:modStats(ST_BASE_HP_REGEN, amt)
         --------------------------------------------------------------------------------------
         -- update hp pct
-        local prevAmt = ConvertStrToHpPct(prev)
-        local afterAmt = ConvertStrToHpPct(after)
-        u:modStats(ST_HP_MAX_PCT, (afterAmt - prevAmt))
+        -- local prevAmt = ConvertStrToHpPct(prev)
+        -- local afterAmt = ConvertStrToHpPct(after)
+        -- u:modStats(ST_HP_MAX_PCT, (afterAmt - prevAmt))
         -- gdebug(str.format('str: %.0f, hp pct: %.3f', after, afterAmt))
-        --------------------------------------------------------------------------------------
-        -- update phy pct
-        local prevAmt = ConvertStrToPhyDmg(prev)
-        local afterAmt = ConvertStrToPhyDmg(after)
-        u:modStats(ST_PHY_RATE, (afterAmt - prevAmt))
         --------------------------------------------------------------------------------------
         -- update base atk
         if u:mainStIs(statsType) then
@@ -71,14 +66,24 @@ function mt.updateBonusStats(u)
         heroStatsRecord[statsType] = after
         --------------------------------------------------------------------------------------
         -- update atk speed
-        local prevAmt = ConvertAgiToAtkSpeed(prev)
-        local afterAmt = ConvertAgiToAtkSpeed(after)
-        u:modStats(ST_ATK_SPEED, (afterAmt - prevAmt))
+        -- local prevAmt = ConvertAgiToAtkSpeed(prev)
+        -- local afterAmt = ConvertAgiToAtkSpeed(after)
+        -- u:modStats(ST_ATK_SPEED, (afterAmt - prevAmt))
         --------------------------------------------------------------------------------------
         -- update atk rate
-        local prevAmt = ConvertAgiToAtkRate(prev)
-        local afterAmt = ConvertAgiToAtkRate(after)
-        u:modStats(ST_ATK_DMG, (afterAmt - prevAmt))
+        -- local prevAmt = ConvertAgiToAtkRate(prev)
+        -- local afterAmt = ConvertAgiToAtkRate(after)
+        -- u:modStats(ST_ATK_DMG, (afterAmt - prevAmt))
+        --------------------------------------------------------------------------------------
+        -- update phy dmg
+        local prevAmt = ConvertAgiToPhyDmg(prev)
+        local afterAmt = ConvertAgiToPhyDmg(after)
+        u:modStats(ST_PHY_DMG, (afterAmt - prevAmt))
+        --------------------------------------------------------------------------------------
+        -- update phy pct
+        local prevAmt = ConvertAgiToPhyRate(prev)
+        local afterAmt = ConvertAgiToPhyRate(after)
+        u:modStats(ST_PHY_RATE, (afterAmt - prevAmt))
         --------------------------------------------------------------------------------------
         -- update base phy def
         -- local prevAmt = ConvertAgiToPhyDef(prev)
@@ -104,15 +109,20 @@ function mt.updateBonusStats(u)
     if after ~= prev then
         heroStatsRecord[statsType] = after
         --------------------------------------------------------------------------------------
+        -- update mag dmg
+        local prevAmt = ConvertIntToMagDmg(prev)
+        local afterAmt = ConvertIntToMagDmg(after)
+        u:modStats(ST_MAG_DMG, (afterAmt - prevAmt))
+        --------------------------------------------------------------------------------------
         -- update mag rate
         local prevAmt = ConvertIntToMagRate(prev)
         local afterAmt = ConvertIntToMagRate(after)
         u:modStats(ST_MAG_RATE, (afterAmt - prevAmt))
         --------------------------------------------------------------------------------------
         -- update skill rate
-        local prevAmt = ConvertIntToSkillRate(prev)
-        local afterAmt = ConvertIntToSkillRate(after)
-        u:modStats(ST_SKILL_DMG, (afterAmt - prevAmt))
+        -- local prevAmt = ConvertIntToSkillRate(prev)
+        -- local afterAmt = ConvertIntToSkillRate(after)
+        -- u:modStats(ST_SKILL_DMG, (afterAmt - prevAmt))
         --------------------------------------------------------------------------------------
         -- update base phy def
         -- local prevAmt = ConvertAgiToPhyDef(prev)
@@ -707,8 +717,20 @@ end
 --------------------------------------------------------------------------------------
 -- 边际递减属性
 --------------------------------------------------------------------------------------
+mt[ST_PHY_DMG] = function(u, amt)
+    local after = mt.generalModifier(u, ST_PHY_DMG, amt)
+
+    return after
+end
+--------------------------------------------------------------------------------------
 mt[ST_PHY_RATE] = function(u, amt)
     local after = mt.generalModifier(u, ST_PHY_RATE, amt)
+
+    return after
+end
+--------------------------------------------------------------------------------------
+mt[ST_MAG_DMG] = function(u, amt)
+    local after = mt.generalModifier(u, ST_MAG_DMG, amt)
 
     return after
 end

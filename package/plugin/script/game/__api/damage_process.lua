@@ -109,7 +109,7 @@ function ApplyDamage(keys)
         keys.critResist = tgt:getStats(ST_CRIT_RESIST)
         keys.dmgRate = keys.dmgRate + unit:getStats(ST_DMG_RATE) + unit:getStats(ST_PHY_RATE)
         keys.defRate = keys.defRate + tgt:getStats(ST_DEF_RATE) + tgt:getStats(ST_PHY_RESIST)
-        keys.receiveExtraRate = keys.receiveExtraRate + tgt:getStats(ST_RECEIVE_EXTRA_PHY_DMG)
+        keys.receiveExtraRate = keys.receiveExtraRate + tgt:getStats(ST_RECEIVE_EXTRA_PHY_DMG) + unit:getStats(ST_PHY_DMG)
     elseif dmgType == DMG_TYPE_MAGICAL then
         keys.def = tgt:getStats(ST_MAG_DEF)
         if keys.def > 0 then
@@ -122,7 +122,7 @@ function ApplyDamage(keys)
         keys.critResist = tgt:getStats(ST_CRIT_RESIST)
         keys.dmgRate = keys.dmgRate + unit:getStats(ST_DMG_RATE) + unit:getStats(ST_MAG_RATE)
         keys.defRate = keys.defRate + tgt:getStats(ST_DEF_RATE) + tgt:getStats(ST_MAG_RESIST)
-        keys.receiveExtraRate = keys.receiveExtraRate + tgt:getStats(ST_RECEIVE_EXTRA_MAG_DMG)
+        keys.receiveExtraRate = keys.receiveExtraRate + tgt:getStats(ST_RECEIVE_EXTRA_MAG_DMG) + unit:getStats(ST_MAG_DMG)
     elseif dmgType == DMG_TYPE_MIX then
         keys.def = (tgt:getStats(ST_PHY_DEF) + tgt:getStats(ST_MAG_DEF)) / 2
         if keys.def > 0 then
